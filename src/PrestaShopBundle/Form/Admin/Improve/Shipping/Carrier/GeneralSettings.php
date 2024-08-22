@@ -100,7 +100,6 @@ class GeneralSettings extends TranslatorAwareType
             ->add('group_access', MaterialChoiceTableType::class, [
                 'label' => $this->trans('Group access', 'Admin.Shipping.Feature'),
                 'help' => $this->trans('Mark the groups that are allowed access to this carrier.', 'Admin.Shipping.Help'),
-                'empty_data' => [],
                 'choices' => $this->groupByIdChoiceProvider->getChoices(),
                 'display_total_items' => true,
                 'constraints' => [
