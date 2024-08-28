@@ -90,6 +90,11 @@ class AddCarrierHandler implements AddCarrierHandlerInterface
         $carrierId = $this->carrierRepository->add($carrier, $command->getAssociatedShopIds());
         $carrier->setGroups($command->getAssociatedGroupIds());
 
+        // To verify if image is already upload before creation
+        if (file_exists(_PS_SHIP_IMG_DIR_ . $carrierId->getValue() . '.jpg')) {
+            $this->carrierLogoFileUploader->deleteOldFile($carrierId->getValue());
+        }
+
         if ($command->getLogoPathName() !== null) {
             $this->carrierValidator->validateLogoUpload(
                 $command->getLogoPathName()
