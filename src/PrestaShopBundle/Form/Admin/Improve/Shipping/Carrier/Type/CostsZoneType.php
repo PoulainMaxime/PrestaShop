@@ -62,7 +62,12 @@ class CostsZoneType extends TranslatorAwareType
                 'prototype_name' => '__range__',
                 'entry_type' => CostsRangeType::class,
                 'label' => false,
-                'required' => false,
+                'entry_options' => [
+                    'empty_data' => [
+                        'prince' => 0.0
+                    ]
+                ],
+                'required' => true,
                 'allow_add' => true,
                 'block_prefix' => 'carrier_ranges_costs_zone_ranges_collection',
             ])
